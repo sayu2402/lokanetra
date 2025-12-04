@@ -38,7 +38,6 @@ export DEBUG="True"
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
-# follow prompt to create admin
 ```
 
 6. Run the server

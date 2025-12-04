@@ -264,5 +264,3 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 =======
-# lokanetra
->>>>>>> de0744483f6894beb1cea6180dbf02664ff9b9b1

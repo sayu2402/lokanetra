@@ -32,8 +32,6 @@ export DATABASE_URL="sqlite:///db.sqlite3"  # optional
 export DEBUG="True"
 ```
 
-> Note: For the timed machine test, keeping `DEBUG=True` and SQLite is acceptable. For production, set secure secrets and use Postgres.
-
 5. Run migrations & create superuser
 
 ```bash
@@ -101,8 +99,6 @@ Content-Type: application/json
   "otp": "1234"
 }
 ```
-
-> For evaluation convenience OTP is returned. Replace with SMS provider in production.
 
 ---
 
@@ -236,24 +232,6 @@ Tip: Save environment variables: `base_url`, `access_token`, `refresh_token`, `a
 
 ---
 
-## Concurrency & Data Integrity
-
-* Wallet updates use database transactions and `select_for_update()` to prevent race conditions.
-* Decimal field used for currency (`DecimalField(max_digits=12, decimal_places=2)`).
-* For production scale, consider storing amounts as integer subunits (e.g., paise/cents) to avoid floating issues.
-
----
-
-## Security Notes
-
-* **OTP** is returned in API response for evaluation only — integrate an SMS gateway (e.g., Twilio, Fast2SMS) before real use.
-* **JWT** tokens used for authentication. Keep `SECRET_KEY` secure.
-* Validate & sanitize all inputs (phone formats, amount formats) for production.
-* Consider rate-limiting OTP requests and login attempts.
-* Use HTTPS in production and secure cookie / CORS settings.
-
----
-
 ## Swagger & API Documentation
 
 * drf-yasg configured:
@@ -262,48 +240,6 @@ Tip: Save environment variables: `base_url`, `access_token`, `refresh_token`, `a
   * `/redoc/` → ReDoc UI
   * `/swagger.json` → OpenAPI JSON
     Ensure `drf_yasg` is included in `INSTALLED_APPS` and schema view is added to `lokanetra/urls.py`.
-
----
-
-## Production Considerations & Improvements
-
-* Use Postgres, configure `DATABASES` accordingly.
-* Add unit tests (important: transaction tests, concurrent transfer tests).
-* Add logging & monitoring for transaction failures.
-* Add transactional email / SMS for high-value transfers.
-* Add KYC & limits for wallet operations if required.
-* Add audit trails for admin actions.
-
----
-
-## Style & Linting
-
-* Follow PEP8 (4-space indentation, <=79 character lines where possible).
-* Use `flake8` or `ruff` to check style:
-
-```bash
-pip install flake8
-flake8 .
-```
-
----
-
-## Troubleshooting
-
-* `OperationalError: database is locked` → close other DB connections or retry; consider Postgres for concurrency testing.
-* `TokenError` → verify JWT settings in `settings.py`.
-* OTP not working → check `users.models.OTP` creation and expiry logic.
-
----
-
-## Deliverables to Submit (Checklist)
-
-* [ ] Complete Django project folder (all apps included)
-* [ ] `requirements.txt`
-* [ ] `README.md` (this file)
-* [ ] Postman / Thunder Client collection (exported JSON or collection file)
-* [ ] DB migration files (`migrations/`)
-* [ ] Swagger UI available at `/swagger/` and `/redoc/`
 
 ---
 

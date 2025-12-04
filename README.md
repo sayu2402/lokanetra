@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Quick Setup (Local / Development)
 
 1. Clone repo
@@ -326,3 +327,6 @@ python manage.py createsuperuser
 # run server
 python manage.py runserver
 ```
+=======
+# lokanetra
+>>>>>>> de0744483f6894beb1cea6180dbf02664ff9b9b1

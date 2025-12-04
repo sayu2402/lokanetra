@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-## Quick Setup (Local / Development)
+This is a simple payment app backend where users log in with OTP, get an auto-created wallet, and can credit, debit, or transfer money. All operations create transaction logs, and the admin can view all wallets and transactions. The super admin creates users, and a small bash script helps quickly assign phone numbers. The whole system is built with Django, DRF, JWT, and Swagger documentation## Quick Setup (Local / Development)
 
 1. Clone repo
 ```bash

@@ -13,6 +13,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     Simple serializer for transaction records.
     Converts sender and receiver into readable strings.
     """
+
     sender = serializers.StringRelatedField()
     receiver = serializers.StringRelatedField()
 

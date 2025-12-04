@@ -18,6 +18,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from wallet.models import Wallet
+
 from .models import OTP, UserProfile
 from .serializers import SendOTPSerializer, UserSerializer, VerifyOTPSerializer
 
@@ -38,8 +39,7 @@ class SendOTPView(APIView):
     permission_classes = [permissions.AllowAny]
 
     @swagger_auto_schema(
-        request_body=SendOTPSerializer,
-        responses={201: SendOTPSerializer()}
+        request_body=SendOTPSerializer, responses={201: SendOTPSerializer()}
     )
     def post(self, request):
         """
@@ -54,8 +54,7 @@ class SendOTPView(APIView):
         OTP.objects.create(phone_number=phone, code=code)
 
         return Response(
-            {"phone_number": phone, "otp": code},
-            status=status.HTTP_201_CREATED
+            {"phone_number": phone, "otp": code}, status=status.HTTP_201_CREATED
         )
 
 
@@ -68,10 +67,7 @@ class VerifyOTPView(APIView):
 
     permission_classes = [permissions.AllowAny]
 
-    @swagger_auto_schema(
-        request_body=VerifyOTPSerializer,
-        responses={200: "token"}
-    )
+    @swagger_auto_schema(request_body=VerifyOTPSerializer, responses={200: "token"})
     def post(self, request):
         """
         Check OTP validity and log the user in.
@@ -89,15 +85,13 @@ class VerifyOTPView(APIView):
             ).latest("created_at")
         except OTP.DoesNotExist:
             return Response(
-                {"detail": "Invalid OTP"},
-                status=status.HTTP_400_BAD_REQUEST
+                {"detail": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST
             )
 
         # Check expiry
         if otp_obj.is_expired():
             return Response(
-                {"detail": "OTP expired"},
-                status=status.HTTP_400_BAD_REQUEST
+                {"detail": "OTP expired"}, status=status.HTTP_400_BAD_REQUEST
             )
 
         otp_obj.is_used = True
@@ -105,9 +99,9 @@ class VerifyOTPView(APIView):
 
         # Create user if not exists
         with transaction.atomic():
-            profile_qs = UserProfile.objects.filter(
-                phone_number=phone
-            ).select_related("user")
+            profile_qs = UserProfile.objects.filter(phone_number=phone).select_related(
+                "user"
+            )
 
             if profile_qs.exists():
                 user = profile_qs.first().user

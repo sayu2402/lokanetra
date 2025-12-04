@@ -93,9 +93,7 @@ class TransactionListAdminView(generics.ListAPIView):
             # --- SENDER PHONE FILTER ---
             sender_phone = self.request.query_params.get("sender_phone")
             if sender_phone:
-                qs = qs.filter(
-                    sender__userprofile__phone_number=sender_phone.strip()
-                )
+                qs = qs.filter(sender__userprofile__phone_number=sender_phone.strip())
 
             # --- RECEIVER PHONE FILTER ---
             receiver_phone = self.request.query_params.get("receiver_phone")
@@ -105,8 +103,12 @@ class TransactionListAdminView(generics.ListAPIView):
                 )
 
             # --- AMOUNT RANGE FILTER ---
-            min_amount = self._parse_decimal(self.request.query_params.get("min_amount"))
-            max_amount = self._parse_decimal(self.request.query_params.get("max_amount"))
+            min_amount = self._parse_decimal(
+                self.request.query_params.get("min_amount")
+            )
+            max_amount = self._parse_decimal(
+                self.request.query_params.get("max_amount")
+            )
 
             if min_amount is not None:
                 qs = qs.filter(amount__gte=min_amount)

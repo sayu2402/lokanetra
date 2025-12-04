@@ -19,9 +19,9 @@ class Transaction(models.Model):
     """
 
     TRANSACTION_TYPES = (
-        ("CREDIT", "Credit"),     # Money added to wallet
-        ("DEBIT", "Debit"),       # Money taken from wallet
-        ("TRANSFER", "Transfer"), # Money moved between users
+        ("CREDIT", "Credit"),  # Money added to wallet
+        ("DEBIT", "Debit"),  # Money taken from wallet
+        ("TRANSFER", "Transfer"),  # Money moved between users
     )
 
     sender = models.ForeignKey(

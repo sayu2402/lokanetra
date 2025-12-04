@@ -36,8 +36,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     """
     if created:
         UserProfile.objects.get_or_create(
-            user=instance,
-            defaults={"phone_number": None}
+            user=instance, defaults={"phone_number": None}
         )
 
 

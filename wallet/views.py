@@ -16,6 +16,7 @@ from rest_framework import generics, permissions, status, views
 from rest_framework.response import Response
 
 from transactions.models import Transaction
+
 from .models import Wallet
 from .serializers import (
     CreditSerializer,
@@ -53,8 +54,7 @@ class WalletCreditView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     @swagger_auto_schema(
-        request_body=CreditSerializer,
-        responses={200: WalletSerializer}
+        request_body=CreditSerializer, responses={200: WalletSerializer}
     )
     def post(self, request):
         """
@@ -69,7 +69,7 @@ class WalletCreditView(views.APIView):
         if amount <= 0:
             return Response(
                 {"detail": "Amount must be positive"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         # Perform safe update
@@ -86,9 +86,7 @@ class WalletCreditView(views.APIView):
                 remarks=remarks,
             )
 
-        return Response(
-            {"balance": str(wallet.balance), "transaction_id": tx.id}
-        )
+        return Response({"balance": str(wallet.balance), "transaction_id": tx.id})
 
 
 class WalletDebitView(views.APIView):
@@ -99,8 +97,7 @@ class WalletDebitView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     @swagger_auto_schema(
-        request_body=DebitSerializer,
-        responses={200: WalletSerializer}
+        request_body=DebitSerializer, responses={200: WalletSerializer}
     )
     def post(self, request):
         """
@@ -115,7 +112,7 @@ class WalletDebitView(views.APIView):
         if amount <= 0:
             return Response(
                 {"detail": "Amount must be positive"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         with db_transaction.atomic():
@@ -123,8 +120,7 @@ class WalletDebitView(views.APIView):
 
             if wallet.balance < amount:
                 return Response(
-                    {"detail": "Insufficient funds"},
-                    status=status.HTTP_400_BAD_REQUEST
+                    {"detail": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST
                 )
 
             wallet.balance -= amount
@@ -138,9 +134,7 @@ class WalletDebitView(views.APIView):
                 remarks=remarks,
             )
 
-        return Response(
-            {"balance": str(wallet.balance), "transaction_id": tx.id}
-        )
+        return Response({"balance": str(wallet.balance), "transaction_id": tx.id})
 
 
 class WalletTransferView(views.APIView):
@@ -165,7 +159,7 @@ class WalletTransferView(views.APIView):
         if amount <= 0:
             return Response(
                 {"detail": "Amount must be positive"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         # Find receiver
@@ -173,8 +167,7 @@ class WalletTransferView(views.APIView):
             receiver_user = User.objects.get(userprofile__phone_number=to_phone)
         except User.DoesNotExist:
             return Response(
-                {"detail": "Receiver not found"},
-                status=status.HTTP_404_NOT_FOUND
+                {"detail": "Receiver not found"}, status=status.HTTP_404_NOT_FOUND
             )
 
         with db_transaction.atomic():
@@ -188,8 +181,7 @@ class WalletTransferView(views.APIView):
 
             if sender_wallet.balance < amount:
                 return Response(
-                    {"detail": "Insufficient funds"},
-                    status=status.HTTP_400_BAD_REQUEST
+                    {"detail": "Insufficient funds"}, status=status.HTTP_400_BAD_REQUEST
                 )
 
             # Update balances

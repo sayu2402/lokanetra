@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "58ae8a36-8405-4af5-92b6-81c30040c6fb",
+		"name": "User Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30181090",
+		"_collection_link": "https://lokanetra.postman.co/workspace/d3a4b1bb-a117-4497-ad17-cf7932a29b0f/collection/30181090-58ae8a36-8405-4af5-92b6-81c30040c6fb?action=share&source=collection_link&creator=30181090"
+	},
+	"item": [
+		{
+			"name": "Wallet Balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ0MzgwLCJpYXQiOjE3NjQ4Mzk1ODAsImp0aSI6IjI2YjljNGYzYWIwMDQzNGJiZDU2ZWQ3NjQwMTY2ZmJjIiwidXNlcl9pZCI6Mn0.2m1EPmpKWH7cBF-Ms27wn8vRdAybpbBM0zqhRzDQoYQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/wallet/balance/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"wallet",
+						"balance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wallet Credit",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ0MzgwLCJpYXQiOjE3NjQ4Mzk1ODAsImp0aSI6IjI2YjljNGYzYWIwMDQzNGJiZDU2ZWQ3NjQwMTY2ZmJjIiwidXNlcl9pZCI6Mn0.2m1EPmpKWH7cBF-Ms27wn8vRdAybpbBM0zqhRzDQoYQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\" : 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/wallet/credit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"wallet",
+						"credit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wallet Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ1MjIxLCJpYXQiOjE3NjQ4NDA0MjEsImp0aSI6ImYxYjgwNGVkYjY1YjQ3ODRiNTdjZjE3ZjBiYjA2MzVjIiwidXNlcl9pZCI6M30.iFG5BtPRVL1l45wbdeCztziAMoSOSHkMy-s5tmr-XZg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to_phone_number\" : \"8075197205\",\r\n    \"amount\" : \"50.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/wallet/transfer/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"wallet",
+						"transfer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wallet Debit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ1MjIxLCJpYXQiOjE3NjQ4NDA0MjEsImp0aSI6ImYxYjgwNGVkYjY1YjQ3ODRiNTdjZjE3ZjBiYjA2MzVjIiwidXNlcl9pZCI6M30.iFG5BtPRVL1l45wbdeCztziAMoSOSHkMy-s5tmr-XZg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": \"50.00\",\r\n  \"remarks\": \"Test debit\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/wallet/debit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"wallet",
+						"debit",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

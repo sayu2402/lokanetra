@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "0ac3621c-45dd-4943-aecf-8ab72de3de0c",
+		"name": "Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30181090",
+		"_collection_link": "https://lokanetra.postman.co/workspace/d3a4b1bb-a117-4497-ad17-cf7932a29b0f/collection/30181090-0ac3621c-45dd-4943-aecf-8ab72de3de0c?action=share&source=collection_link&creator=30181090"
+	},
+	"item": [
+		{
+			"name": "Transaction Filter",
+			"item": [
+				{
+					"name": "By Sender Phone",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/transactions/admin-list/?sender_phone=8748775566",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"transactions",
+								"admin-list",
+								""
+							],
+							"query": [
+								{
+									"key": "sender_phone",
+									"value": "8748775566"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/transactions/admin-list/?type=credit",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"transactions",
+								"admin-list",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "credit"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Date",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/transactions/admin-list/?start_date=2025-12-04&end_date=2025-12-04",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"transactions",
+								"admin-list",
+								""
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2025-12-04"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-12-04"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By Amount Range",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/transactions/admin-list/?min_amount=100&max_amount=500",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"transactions",
+								"admin-list",
+								""
+							],
+							"query": [
+								{
+									"key": "min_amount",
+									"value": "100"
+								},
+								{
+									"key": "max_amount",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000//auth/admin/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"",
+						"auth",
+						"admin",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Wallet Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000//wallet/admin/wallets/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"",
+						"wallet",
+						"admin",
+						"wallets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY1NDQ3NTI5LCJpYXQiOjE3NjQ4NDI3MjksImp0aSI6IjhkYjFmYjEyMTc5MTQ1OTBhMmMwYmY5NDY5ODMwZmYwIiwidXNlcl9pZCI6MX0.ZBCMRCRKO6HhEFINWaUd9tYTDVZzCvJOJdWa0qfG7Co",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/transactions/admin-list/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"transactions",
+						"admin-list",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

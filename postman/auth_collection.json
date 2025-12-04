@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "1e4d1033-b864-4e7a-99d5-b7f3235dfda4",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30181090",
+		"_collection_link": "https://lokanetra.postman.co/workspace/d3a4b1bb-a117-4497-ad17-cf7932a29b0f/collection/30181090-1e4d1033-b864-4e7a-99d5-b7f3235dfda4?action=share&source=collection_link&creator=30181090"
+	},
+	"item": [
+		{
+			"name": "OTP Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\" : \"8075197205\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/auth/send-otp/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"auth",
+						"send-otp",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OTP Verification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\" : \"8075197205\",\r\n    \"otp\" : \"1181\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/auth/verify-otp/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"auth",
+						"verify-otp",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://127.0.0.1:8000",
+			"type": "default"
+		}
+	]
+}

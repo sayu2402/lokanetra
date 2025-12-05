@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ```bash
 export DJANGO_SECRET_KEY="replace-with-secure-secret"
-export DATABASE_URL="sqlite:///db.sqlite3"  # optional
+export DATABASE_URL="sqlite:///db.sqlite3"
 export DEBUG="True"
 ```
 
